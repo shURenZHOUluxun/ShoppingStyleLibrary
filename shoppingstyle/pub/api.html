@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>api</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/ShoppingStyle.js"></script>
+	<script defer type="text/javascript" src='/javascripts/examples.js'></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/api.css">
+</head>
+
+<body>
+	<div id="header">
+		<div class="header_name">
+			<a href="home.html" class="header_text">ShoppingStyle</a>
+		</div>
+		<div class="header_link">
+			<a href="api.html" >API</a>
+			<a href="examples.html" >examples</a>
+			<a href="https://github.com/csc309-fall-2020/js-library-zengji15/tree/master/shoppingstyleapp" >download</a>
+		</div>
+	</div>
+
+	<div class="main_body">
+		<h1 align="center" class="body_header"> API</h1>
+		<div class="outer_container">
+			<h2 class="body_header2"> Getting Started</h2>
+			<p>Download ShoppingStyle.js from pub/javascripts. At the every beginning, you need to add those script on your html.</p>
+			<div class="code_container">
+				<code>
+						&ltscript src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"&gt&lt/script&gt<br>
+						&ltscript type="text/javascript" src="&ltfolder containning ShoppingStyle.js&gt/ShoppingStyle.js"&gt&lt/script&gt
+				</code>
+			</div>
+			<p> Then you are able to use ShoppingStyle Library!</p>
+			<h2 class="body_header2">Constructors: </h1>
+			<h3 class="body_header3">ImageContainer()</h2>
+			<p>Initialize an empty image container which user can add more than one image to it.<br> The very first image will displayed on webpage.</p>
+			<div class="code_container">
+				<code>
+					const imageContainer = new ImageContainer()
+				</code>
+			</div>
+			<h3 class="body_header3">LayoutGenerator()</h2>
+			<p>Initialize an empty list of images which we will create layout on.</p>
+
+			<h2 class="body_header2">ImageContainer Methods</h1>
+			<div class="methods">
+				<h3 class="body_header3">.addFirstPicture(image, selector, style)</h3>
+				add image to selected node with style. Then the image will appended as child element of selected element. 
+				<div>
+					<p>image: the link to the image; type:string </p>
+					<p>selector: the parent node we want to select and add image to; type:string </p>
+					<p>style: the html inline style of the image; type:string</p>
+				</div>
+				<div class="code_container">
+					<code>
+						imageContainer.addFirstPicture("image.png", "#parent_id", "width: 750px; height: 350px; margin: 10px;")
+					</code>
+				</div>
+
+				<h3 class="body_header3">.addNextPicture(image)</h3>
+				append image to the container. Only call this function if .addFirstPicture() is already called.
+				<div>
+					<p>image: the link to the image; type:string </p>
+				</div>
+				<div class="code_container">
+					<code>
+						imageContainer.addNextPicture("image.png")
+					</code>
+				</div>
+
+				<h3 class="body_header3">.loopPictureHelp(delay)</h3>
+				loop images in current container one time, each image will show on webpage one by one.
+				<div>
+					<p>delay: the timeout between each image change; type: number </p>
+				</div>
+				<div class="code_container">
+					<code>
+						imageContainer.loopPictureHelp(2000)
+					</code>
+				</div>
+
+				<h3 class="body_header3">.loopPictureAuto(delay)</h3>
+				loop images in current container again and again with no stopping, each image will show on webpage one by one.
+				<div>
+					<p>delay: the timeout between each image change; type: number </p>
+				</div>
+				<div class="code_container">
+					<code>
+						imageContainer.loopPictureAuto(2000)
+					</code>
+				</div>
+
+				<h3 class="body_header3">.findNextPict(selector)</h3>
+				change current image(which displayed on the webpage) to the next image in container.
+				<div>
+					<p>selector: the id/classname of the button to be selected, if the button clicked, the method will be triggered; type: string </p>
+				</div>
+				<div class="code_container">
+					<code>
+						imageContainer.findNextPict("#button_id")
+					</code>
+				</div>
+
+				<h3 class="body_header3">.findPrePict(selector)</h3>
+				change current image(which displayed on the webpage) to the previous image in container.
+				<div>
+					<p>selector: the id/classname of the button to be selected, if the button clicked, the method will be triggered; type: string </p>
+				</div>
+				<div class="code_container">
+					<code>
+						imageContainer.findPrePict("#button_id")
+					</code>
+				</div>
+
+				<h3 class="body_header3">.changeByOne(selector)</h3>
+				change current image(which displayed on the webpage) to the second image in container <br>when mouse is over current image, and change back to current image if mouse leaves image.
+				<div>
+					<p>selector: the id/classname of the parent node; type: string </p>
+				</div>
+				<div class="code_container">
+					<code>
+						imageContainer.changeByOne("#pic_container")
+					</code>
+				</div>
+			</div>
+
+			<h2 class="body_header2">LayoutGenerator Methods</h1>
+			<div class="methods">
+				<h3 class="body_header3">.addObjects(object, selector, style)</h3>
+				add images which we want to put in the layout.
+				<div>
+					<p>object: the link to the image; type:string </p>
+					<p>selector: the parent node we want to select and add image to, <br>only one LayoutGenerator for one parent node. <br>Cannot add elements to parent node other than current LayoutGenerator; type:string </p>
+					<p>style: the html inline style of the image; type:string</p>
+				</div>
+				<div class="code_container">
+					<code>
+						layout.addObjects("image.png", "#parent_id", "width: 750px; height: 350px; margin: 10px;")
+					</code>
+				</div>
+
+				<h3 class="body_header3">.increasing(selector)</h3>
+				arrange pictures in increasing order by width.
+				<div>
+					<p>selector: the parent node we want to select and modify the layout; type:string </p>
+				</div>
+				<div class="code_container">
+					<code>
+						layout.increasing("#parent_id")
+					</code>
+				</div>
+
+				<h3 class="body_header3">.decreasing(selector)</h3>
+				arrange pictures in decreasing order by width.
+				<div>
+					<p>selector: the parent node we want to select and modify the layout; type:string </p>
+				</div>
+				<div class="code_container">
+					<code>
+						layout.decreasing("#parent_id")
+					</code>
+				</div>
+
+				<h3 class="body_header3">.alignRight(selector)</h3>
+				align pictures to parent's right border .
+				<div>
+					<p>selector: the parent node we want to select and modify the layout; type:string </p>
+				</div>
+				<div class="code_container">
+					<code>
+						layout.alignRight("#parent_id")
+					</code>
+				</div>
+
+				<h3 class="body_header3">.alignLeft(selector)</h3>
+				align pictures to parent's left border .
+				<div>
+					<p>selector: the parent node we want to select and modify the layout; type:string </p>
+				</div>
+				<div class="code_container">
+					<code>
+						layout.alignLeft("#parent_id")
+					</code>
+				</div>
+
+				<h3 class="body_header3">.resize(percentage, selector)</h3>
+				resize all pictures by percentage of their current size.
+				<div>
+					<p>selector: the parent node we want to select and modify the layout; type:string </p>
+				</div>
+				<div class="code_container">
+					<code>
+						layout.resize("#parent_id")
+					</code>
+				</div>
+
+
+
+
+
+			</div>
+
+
+
+		</div>
+
+	</div>
+	
+
+
+
+
+</body>
+</html>

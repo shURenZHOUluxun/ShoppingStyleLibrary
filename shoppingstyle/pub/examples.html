@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>examples</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/ShoppingStyle.js"></script>
+	<script defer type="text/javascript" src='/javascripts/examples.js'></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/examples.css">
+</head>
+
+<body>
+	<div id="header">
+		<div class="header_name">
+			<a href="home.html" class="header_text">ShoppingStyle</a>
+		</div>
+		<div class="header_link">
+			<a href="api.html" >API</a>
+			<a href="examples.html" >examples</a>
+			<a href="https://github.com/csc309-fall-2020/js-library-zengji15/tree/master/shoppingstyleapp" >download</a>
+		</div>
+	</div>
+
+	<div class="main_body">
+		<h1 align="center" class="body_header"> Examples</h1>
+		<div class="outer_container">
+			<h2 class="header2">loop pictures </h2>
+			<p>automatically loop pictures in an array</p>
+			<div id="pic_container"></div>
+			<div class="code_container">
+					<h3>JS code</h3>
+					<code>
+					const imageContainer = new ImageContainer()
+					imageContainer.addFirstPicture("/images/lvshow.png", "#pic_container", "width: 750px; height: 350px; margin: 10px;") <br>
+					imageContainer.addNextPicture("/images/lvshow2.png")
+					imageContainer.addNextPicture("/images/diorshow.png")
+					imageContainer.addNextPicture("/images/diorshow2.png")<br>
+					imageContainer.loopPictureAuto(2000, "#find_next")
+					</code>
+			</div>
+
+			<h2 class="header2">Mouseover event handler</h2>
+			<p>changing picture if mouse is over the picture</p>
+			<div id="pic_container3"></div>
+			<div class="code_container">
+					<h3>JS code</h3>
+					<code>
+					const imageContainer3 = new ImageContainer()
+					imageContainer3.addFirstPicture("/images/diorWhiteSaddle.png", "#pic_container3", "width: 250px; height: 150px; margin: 10px;") <br>
+					imageContainer3.addNextPicture("/images/diorWhiteSaddle2.png")
+					imageContainer3.changeByOne("#pic_container3")
+					</code>
+			</div>
+
+			<h2 class="header2" >browse picture</h2>
+			<p>browse picture with clicking button</p>
+			<div id="pic_container2"></div>
+			<button id="find_prev"> prev</button>
+			<button id="find_next"> next</button>
+			<div class="code_container">
+					<h3>JS code</h3>
+					<code>
+					const imageContainer2 = new ImageContainer()<br>
+					imageContainer2.addFirstPicture("/images/lvshow.png", "#pic_container2", "width: 750px; height: 350px; margin: 10px;") <br>
+					imageContainer2.addNextPicture("/images/lvshow2.png")
+					imageContainer2.addNextPicture("/images/diorshow.png")
+					imageContainer2.addNextPicture("/images/diorshow2.png")<br>
+					imageContainer2.findNextPict("#find_next")<br>
+					imageContainer2.findPrePict("#find_prev")
+
+					</code>
+			</div>
+
+			<h2 class="header2">Picture Layout</h2>
+			<p>layout changing</p>
+			<div id="layout"></div>
+			<button id="increasing">increasing</button>
+			<button id="decreasing">decreasing</button>
+			<button id="alignright">align right</button>
+			<button id="alignleft">align left</button>
+			<div class="code_container">
+					<h3>JS code</h3>
+					<code>
+					const layout = new LayoutGenerator() <br>
+					layout.addObjects("/images/diorWhiteSaddle2.png", "#layout", "width: 200px; height: 150px; margin: 10px;")<br>
+					layout.addObjects("/images/diorWhiteSaddle.png", "#layout", "width: 100px; height: 70px; margin: 10px;")<br>
+					$("#increasing").click(
+						function(){
+							layout.increasing("#layout")
+						}
+					)<br>
+
+					$("#decreasing").click(
+						function(){
+							layout.decreasing("#layout")
+						}
+					)<br>
+
+					$("#alignright").click(
+						function(){
+							layout.alignRight("#layout")
+						}
+					)<br>
+
+					$("#alignleft").click(
+						function(){
+							layout.alignLeft("#layout")
+						}
+					)
+					</code>
+			</div>
+
+
+			<h2 class="header2">Layout resizing</h2>
+			<p>layout resizing with percentage</p>
+			<div id="layout2"></div>
+			<button id="fifty">50%</button>
+			<button id="seventy">70%</button>
+			<button id="onetwenty">120%</button>
+			<div class="code_container">
+					<h3>JS code</h3>
+					<code>
+					const layout2 = new LayoutGenerator()<br>
+					layout2.addObjects("/images/diorWhiteSaddle.png", "#layout2", "width: 200px; height: 150px; margin: 10px;")<br>
+					layout2.addObjects("/images/diorWhiteSaddle2.png", "#layout2", "width: 100px; height: 70px; margin: 10px;")<br>
+					layout2.addObjects("/images/diorWhiteSaddle3.png", "#layout2", "width: 100px; height: 70px; margin: 10px;")<br>
+					layout2.addObjects("/images/diorWhiteSaddle4.png", "#layout2", "width: 100px; height: 70px; margin: 10px;")<br>
+					$("#fifty").click(
+						function(){
+							layout2.resize(50, "#layout2")
+						}
+					)<br>
+					$("#seventy").click(
+						function(){
+							layout2.resize(70, "#layout2")
+						}
+					)<br>
+					$("#onetwenty").click(
+						function(){
+							layout2.resize(120, "#layout2")
+						}
+					)
+					</code>
+			</div>
+
+
+	</div>
+
+</body>
+</html>
