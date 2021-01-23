@@ -1,0 +1,2 @@
+# ShoppingStyleLibrary
+Javascript library
